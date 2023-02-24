@@ -6,7 +6,8 @@
         'contacts' => 'contacts/',
         'htours' => 'htours/',
         // Admin
-        'admin' => 'admin/index'
+        'admin' => 'admin/',
+        'loginadm' => 'loginadm/'
     );
 
 ?>

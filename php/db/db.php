@@ -1,7 +1,7 @@
 <?php
     class DB {
         public $host = 'localhost';
-        public $db = 'at_shop';
+        public $db = 'tour';
         public $user = 'alex';
         public $pwd = 'A20v10T1964';
 

@@ -31,7 +31,7 @@
     </head>
     <body>
         
-        <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">
+        <nav class="navbar navbar-expand-lg ftco_navbar" id="ftco-navbar">
 	        <div class="container">
 	            <a class="navbar-brand" href="/about"><img src="../img/logo/logo_tour.png" alt=""></a>
 	            <div class="navbar-collapse" id="ftco-nav">
@@ -40,7 +40,7 @@
 	                    <li class="nav-item"><a href="/tours" class="nav-link">Поиск тура</a></li>
 	                    <li class="nav-item"><a href="/htours" class="nav-link">Горячие туры</a></li>
 	                    <li class="nav-item"><a href="/contacts" class="nav-link">Контакты</a></li> -->
-	                    <li class="nav-item"><a href="admin/adminpanel" class="nav-link">Вход</a></li>
+	                    <li class="nav-item"><a href="/loginadm" class="nav-link">Вход</a></li>
                     </ul>
 	            </div>
 	        </div>
