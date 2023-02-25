@@ -7,10 +7,11 @@
 </script>
 
 <!-- <section class="hero-wrap js-fullheight"> -->
-    
-<div class="bg-adm">
+<section class="bg-section">    
+    <div class="bg-adm">
     	
-</div>
+    </div>
+</section>
 <!-- </section> -->
 
 <?php

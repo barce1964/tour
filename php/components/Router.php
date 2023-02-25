@@ -40,15 +40,13 @@
                     // echo "<br>";
                     // Если есть совпадения, определить какой контроллер
                     // и action обрабатывают запрос
-                    $first = $segments[0];
-                    // echo $first . "<br>";
-                    $controllerName = $first . 'Controller';
+                    // 
+                    $controllerName = array_shift($segments) . 'Controller';
+                    // echo "controllerName = " . $controllerName . "<br>";
                     $controllerName = ucfirst($controllerName);
-                    $actionName = $first;
-                    $actionName = ucfirst($actionName);
-                    $actionName = 'action' . $actionName;
+                    $actionName = 'action' . ucfirst(array_shift($segments));
                     $parameters = $segments;
-                    // echo $controllerName . "<br>";
+                    // echo "controllerName = " . $controllerName . "<br>";
                     // echo $actionName . "<br>";
                     // Подключить файл класса контроллера
 

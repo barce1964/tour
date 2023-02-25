@@ -29,18 +29,18 @@
         <!-- <link rel="stylesheet" href=?php echo ROOT . '/css/style.css';?>> -->
         <link rel="stylesheet" href="../css/style.css">
     </head>
-    <body>
+    <body class="bg-adm">
         
         <nav class="navbar navbar-expand-lg ftco_navbar" id="ftco-navbar">
 	        <div class="container">
 	            <a class="navbar-brand" href="/about"><img src="../img/logo/logo_tour.png" alt=""></a>
 	            <div class="navbar-collapse" id="ftco-nav">
-	                <ul class="navbar-nav ml-auto">
+	                <ul class="navbar-nav ml-auto" id="adm-nav">
 	                    <!-- <li class="nav-item"><a href="/about" class="nav-link">О нас</a></li>
 	                    <li class="nav-item"><a href="/tours" class="nav-link">Поиск тура</a></li>
 	                    <li class="nav-item"><a href="/htours" class="nav-link">Горячие туры</a></li>
 	                    <li class="nav-item"><a href="/contacts" class="nav-link">Контакты</a></li> -->
-	                    <li class="nav-item"><a href="/loginadm" class="nav-link">Вход</a></li>
+	                    <li class="nav-item"><a href="/login" class="nav-link">Вход</a></li>
                     </ul>
 	            </div>
 	        </div>

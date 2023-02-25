@@ -1,8 +1,10 @@
 <?php
 
-    class LoginadmController {
+    class AdminUserController {
 
-        public function actionLoginadm() {
+        public function actionLogin() {
+
+
             require_once(ROOT . '/php/views/admin/login/index.php');
 
             return true;

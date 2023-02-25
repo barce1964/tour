@@ -4,10 +4,15 @@
 
 <script type="text/javascript">
     $('body').css('overflow', 'hidden');
+    $("#adm-nav").css('display', 'none');
 </script>
 
-<div class="bg-adm">
-    <form class="feed-form ftco-animate" id="f_mess" action="/loginadm" method="post">
+<section class="bg-section">
+    <div class="bg-adm">
+
+    </div>
+
+    <form class="feed-form-adm ftco-animate" id="f_mess" action="/login" method="post">
         <table>
             <tr><td class="f-first-cell" align="right"><label class="labels" for="adm_name">Имя пользователя:</label></td><td><input name="name" placeholder="Ник" type="text" class="a-l-text" id="adm_name" value="<?php echo $userName; ?>"></td><td><p id="blink1"><?php echo $errors[0];?></p></td></tr>
             <tr><td class="f-first-cell" align="right"><label class="labels" for="f_phone">Пароль:</label></td><td><input name="passwd" type="password" class="a-l-text" id="f_pwd"></td><td><p id="blink1"><?php echo $errors[1];?></p></td></tr>
@@ -24,10 +29,11 @@
                 </td>
                 <td><p id="blink1"><?php echo $errors[5];?></p></td>
             </tr>
-            <tr><td colspan="2"><div><button id="btn_adm_submit" class="button button_submit f-center-cell" type="submit" name="submit" value="true">Отправить</button></div></td></tr>
+            <tr><td colspan="2"><div><button id="btn_adm_submit" class="button button_submit f-center-cell" type="submit" name="submit" value="true">Войти</button></div></td></tr>
         </table>
     </form>
-</div>
+</section>
+
 <!-- </section> -->
 
 <?php

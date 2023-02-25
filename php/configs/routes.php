@@ -1,13 +1,13 @@
 <?php
     return array(
         // Pages
-        'about' => 'about/',
-        'tours' => 'tours/',
-        'contacts' => 'contacts/',
-        'htours' => 'htours/',
+        'about' => 'about/about',
+        'tours' => 'tours/tours',
+        'contacts' => 'contacts/contacts',
+        'htours' => 'htours/htours',
         // Admin
-        'admin' => 'admin/',
-        'loginadm' => 'loginadm/'
+        'login' => 'adminUser/login',
+        'admin' => 'admin/admin',
     );
 
 ?>
