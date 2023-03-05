@@ -47,11 +47,11 @@
                     $actionName = 'action' . ucfirst(array_shift($segments));
                     $parameters = $segments;
                     // echo "controllerName = " . $controllerName . "<br>";
-                    // echo $actionName . "<br>";
+                    // echo "actionName = " . $actionName . "<br>";
                     // Подключить файл класса контроллера
 
                     $controllerFile = ROOT . '/php/controllers/' . $controllerName . '.php';
-                    // echo $controllerFile . "<br>";
+                    // echo "controllerFile = " . $controllerFile . "<br>";
                     if(file_exists($controllerFile)) {
                         include_once($controllerFile);
                     }

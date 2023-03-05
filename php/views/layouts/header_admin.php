@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
         <link rel="stylesheet" href="../css/jquery.timepicker.css">
     
-        <script src="js/jquery.min.js"></script>
+        <script src="../../../js/jquery-3.2.1.min.js"></script>
 
         <link rel="stylesheet" href="../css/flaticon.css">
         <link rel="stylesheet" href="../css/icomoon.css">
@@ -36,11 +36,15 @@
 	            <a class="navbar-brand" href="/about"><img src="../img/logo/logo_tour.png" alt=""></a>
 	            <div class="navbar-collapse" id="ftco-nav">
 	                <ul class="navbar-nav ml-auto" id="adm-nav">
-	                    <!-- <li class="nav-item"><a href="/about" class="nav-link">О нас</a></li>
-	                    <li class="nav-item"><a href="/tours" class="nav-link">Поиск тура</a></li>
-	                    <li class="nav-item"><a href="/htours" class="nav-link">Горячие туры</a></li>
-	                    <li class="nav-item"><a href="/contacts" class="nav-link">Контакты</a></li> -->
-	                    <li class="nav-item"><a href="/login" class="nav-link">Вход</a></li>
+                        <?php if (isset($_SESSION['user_adm'])): ?>
+	                        <li class="nav-item"><a href="order" class="nav-link">Открытые заявки</a></li>
+	                        <li class="nav-item"><a href="tabs" class="nav-link">Туры</a></li>
+	                        <li class="nav-item"><a href="users" class="nav-link">Пользователи</a></li>
+	                        <li class="nav-item"><a href="profile" class="nav-link">Профиль</a></li>
+	                        <li class="nav-item"><a href="logout" class="nav-link">Выход</a></li>
+                        <?php else: ?>
+	                        <li class="nav-item"><a href="admin/login" class="nav-link">Вход</a></li>
+                        <?php endif; ?>
                     </ul>
 	            </div>
 	        </div>

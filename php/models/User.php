@@ -1,7 +1,7 @@
 <?php
 
     class User {
-        private static function genStr($step) {
+        public static function genStr($step) {
             $i = 1;
             $strg = '';
             while ($i <= $step) {
@@ -71,7 +71,7 @@
          * @return mixed : ingeger user id or false
          */
         public static function checkUserData($email, $password) {
-            include_once ROOT . '/db/connect.php';
+            include_once ROOT . '/php/db/db.php';
             $user = array();
             if ($email != '') {
                 $connect = new DB;
@@ -96,14 +96,44 @@
             return false;
         }
 
+        public static function checkUserDataAdm($nic, $pwd) {
+            include_once ROOT . '/php/db/db.php';
+            $user = array();
+            if ($nic != '') {
+                $db = new DB;
+
+                //$pwd = crypt($password, '$6$rounds=5000$usesomesillystringforsalt$');
+            
+                $qry = "SELECT * FROM adm_users_adm WHERE login_adm = '$nic'";
+
+                $user = $db->runQry($qry, 1);
+                $cipher = $user['user_adm_cif'];
+                $iv = $user['user_adm_iv'];//openssl_random_pseudo_bytes($ivlen);
+                $key = $user['user_adm_key'];
+                $pwd = openssl_encrypt($pwd, $cipher, $key, $options=0, $iv);
+                $query = "SELECT * FROM adm_users_adm WHERE login_adm = '$nic' and passwd_adm = '$pwd'";
+                $user = $db->runQry($query, 1);
+            }
+
+            if ($user) {
+                return $user['id_user_adm'];
+            }
+
+            return false;
+        }
         /**
          * Запоминаем пользователя
          * @param string $email
          * @param string $password
          */
-        public static function auth($userId) {
-            $_SESSION['user'] = $userId;
-            AdminBase::getRoles();
+        public static function auth($userId, $ch) {
+            if ($ch == 1) {
+                $_SESSION['user_adm'] = $userId;
+            } else {
+                $_SESSION['user'] = $userId;
+            }
+            
+            // AdminBase::getRoles();
         }
 
         public static function checkLogged() {
@@ -159,6 +189,13 @@
             return false;
         }
 
+        public static function checkCard($card) {
+            if (strlen($card) == 16) {
+                return true;
+            }
+            return false;
+        }
+
         public static function checkSbj($sbj) {
             if ($sbj != '') {
                 return true;
@@ -198,14 +235,14 @@
         * @param integer $id
         */
         public static function getUserById($id) {
-            include_once ROOT . '/db/connect.php';
+            include_once ROOT . '/php/db/db.php';
 
             if ($id) {
-                $connect = new DB();
+                $db = new DB();
 
-                $sql = 'SELECT * FROM at_adm_users WHERE id_user = ' . $id;
+                $sql = 'SELECT * FROM adm_users_adm WHERE id_user_adm = ' . $id;
 
-                return $connect->getList($sql, 6);
+                return $db->runQry($sql, 1);
             }
         }
 
@@ -234,6 +271,16 @@
             $db = new DB();
             $sql = "SELECT id_user, name_user, email_user, phone_user FROM at_adm_users";
             return $db->getList($sql, 16);
+        }
+
+        public static function getAdmUsersList() {
+            include_once ROOT . '/php/db/db.php';
+            $db = new DB();
+            $sql = "SELECT b.name_country, c.name_city, a.first_name_adm, a.last_name_adm,
+                a.phone_num_adm, a.email_adm, a.login_adm FROM adm_users_adm a,
+                sp_countries b, sp_cities c WHERE a.id_country = b.id_country AND
+                a.id_city = c.id_city";
+            return $db->runQry($sql, 2);
         }
 
         public static function getRolesList(){

@@ -16,7 +16,7 @@
                 return mysqli_fetch_row($result);
         }
 
-        public function getList($qry, $idx) {
+        public function runQry($qry, $idx) {
             
             $con = mysqli_connect($this->host, $this->user, $this->pwd, $this->db) 
                 or die("Ошибка " . mysqli_error($con));
@@ -28,22 +28,33 @@
                 case 1:
                     $returnList = array();
                     while ($row = mysqli_fetch_row($result)) {
-                        $returnList[$i]['id_news'] = $row[0];
-                        $returnList[$i]['title'] = $row[1];
-                        $returnList[$i]['date'] = $row[2];
-                        $returnList[$i]['author_name'] = $row[3];
-                        $returnList[$i]['short_content'] = $row[4];
-                        $i++;
+                        $returnList['id_user_adm'] = $row[0];
+                        $returnList['id_country'] = $row[1];
+                        $returnList['id_sp_city'] = $row[2];
+                        $returnList['first_name_adm'] = $row[3];
+                        $returnList['last_name_adm'] = $row[4];
+                        $returnList['phone_num_adm'] = $row[5];
+                        $returnList['email_adm'] = $row[6];
+                        $returnList['parent_user_adm'] = $row[7];
+                        $returnList['card_num_user_adm'] = $row[8];
+                        $returnList['login_adm'] = $row[9];
+                        $returnList['user_adm_cif'] = $row[10];
+                        $returnList['user_adm_iv'] = $row[11];
+                        $returnList['user_adm_key'] = $row[12];
+                        $returnList['passwd_adm'] = $row[13];
                     }
                     break;
 
                 case 2:
                     $returnList = array();
                     while ($row = mysqli_fetch_row($result)) {
-                        $returnList[$i]['id_cat'] = $row[0];
-                        $returnList[$i]['name_cat'] = $row[1];
-                        $returnList[$i]['sort_order'] = $row[2];
-                        $returnList[$i]['status_cat'] = $row[3];
+                        $returnList[$i]['name_country'] = $row[0];
+                        $returnList[$i]['name_city'] = $row[1];
+                        $returnList[$i]['first_name_adm'] = $row[2];
+                        $returnList[$i]['last_name_adm'] = $row[3];
+                        $returnList[$i]['phone_num_adm'] = $row[4];
+                        $returnList[$i]['email_adm'] = $row[5];
+                        $returnList[$i]['login_adm'] = $row[6];
                         $i++;
                     }
                     break;
