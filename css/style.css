@@ -9141,7 +9141,7 @@ textarea.form-control {
   top: 0;
   left: 0;
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   z-index: 0;
 }
 
@@ -9287,7 +9287,7 @@ textarea.form-control {
 
 .feed-form-adm {
   position: absolute;
-  top: 25%;
+  top: 5%;
   left: 30%;
   transform: translateX(-50%);
   display: flow-root;
@@ -9427,12 +9427,12 @@ button:disabled {
   left: 3%;
   /* transform: translateX(-50%); */
   width: 94%;
-  height: 70vh;
+  height: 64vh;
   /* overflow: auto; */
 }
 
 .usr-tbl {
-  margin-top: 20px;
+  margin-top: 10px;
   overflow: auto;
 }
 

@@ -2,9 +2,15 @@
     include ROOT . '/php/views/layouts/header_admin.php';
 ?>
 
+<script>
+    $('body').css('overflow', 'auto');
+</script>
+
 <div class="panel-head ftco-animate">
     <div class="panel-btn">
-        <button id="btn-create">Создать</button>
+        <form action="users/create" method="POST">
+            <button id="btn-create">Создать</button>
+        </form>
         <button id="btn-delete">Удалить</button>
     </div>
 </div>

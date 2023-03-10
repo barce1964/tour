@@ -64,24 +64,24 @@
                 $errors = false;
 
                 if (!User::checkPhone($phone)) {
-                    $errors[3] = "Номер телефона не меньше 10 символов";
+                    $errors[2] = "Номер телефона не короче 10 символов";
                 }
 
                 if (!User::checkEmail($email)) {
-                    $errors[4] = "Ошибочный Email";
+                    $errors[3] = "Ошибочный Email";
                 }
 
                 if (!User::checkCard($card)) {
-                    $errors[5] = "Номер карты должен быть 16 цифр";
+                    $errors[4] = "Номер карты должен быть 16 цифр";
                 }
 
                 if (!User::checkName($nic)) {
-                    $errors[6] = "Ник не может быть короче 2 символов";
+                    $errors[5] = "Ник не может быть короче 2 символов";
                 }
 
                 if ($pwd != '') {
                     if (!User::checkPassword($pwd)) {
-                        $errors[7] = "Пароль не может быть короче 8 символов";
+                        $errors[6] = "Пароль не может быть короче 8 символов";
                     }
                 }
 
@@ -122,8 +122,70 @@
         public function actionUsers() {
             include_once ROOT . '/php/models/User.php';
             $listUsr = User::getAdmUsersList();
-            
+            // print_r($listUsr);
             require_once(ROOT . '/php/views/admin/user/users.php');
+
+            return true;
+        }
+
+        public function actionCreate() {
+            
+            include_once ROOT . '/php/models/User.php';
+           
+            $name = '';
+            $lastname = '';
+            $phone = '';
+            $email = '';
+            $nic = '';
+            $pwd = '';
+            
+            if (isset($_POST['submit'])) {
+                $name = $_POST['name'];
+                $lastname = $_POST['lastname'];
+                $phone = $_POST['phone'];
+                $email = $_POST['email'];
+                $nic = $_POST['nic'];
+                $pwd = $_POST['pwd'];
+
+                $errors = false;
+            
+                if (!User::checkPhone($phone)) {
+                    $errors[2] = "Номер телефона не короче 10 символов";
+                }
+
+                if (!User::checkEmail($email)) {
+                    $errors[3] = "Ошибочный Email";
+                }
+
+                if (!User::checkName($nic)) {
+                    $errors[4] = "Ник не может быть короче 2 символов";
+                }
+
+                if (($pwd == '') && (!User::checkPassword($pwd))) {
+                    $errors[5] = "Пароль не может быть пустым или короче 8 символов";
+                }
+
+                if ($errors == false) {
+
+                    $cipher = "aes-256-ofb";
+                    $iv = User::genStr(16);
+                    $key = User::genStr(32);
+                    $pwd = openssl_encrypt($pwd, $cipher, $key, $options=0, $iv);
+                    $qry = "INSERT INTO adm_users_adm (first_name_adm, last_name_adm,
+                        phone_num_adm, email_adm, card_num_user_adm, login_adm, user_adm_cif,
+                        user_adm_iv, user_adm_key, passwd_adm) VALUES ('$name', '$lastname',
+                        '$phone', '$email', '0000000000000000', '$nic', '$cipher', '$iv', '$key',
+                        '$pwd')";
+
+                    echo $qry . '<br>';
+                    $db->runQry($qry, 0);
+                    
+                    header("Location: users");
+                }
+
+            }
+
+            require_once(ROOT . '/php/views/admin/user/create.php');
 
             return true;
         }

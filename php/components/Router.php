@@ -11,6 +11,7 @@
         // метод возвращает строку запроса uri
         private function getURI() {
             // print_r($_SERVER['REQUEST_URI']);
+            // echo '<br>';
             if(!empty($_SERVER['REQUEST_URI'])) {
                 if ($_SERVER['REQUEST_URI'] == '/') {
                     return 'about';
@@ -53,18 +54,18 @@
                     $controllerFile = ROOT . '/php/controllers/' . $controllerName . '.php';
                     // echo "controllerFile = " . $controllerFile . "<br>";
                     if(file_exists($controllerFile)) {
+                        // echo 'test<br>';
+                        // $fl = true;
                         include_once($controllerFile);
                     }
 
                     // Создать объект. Вызвать метод, т.е. action.
 
                     $controllerObject = new $controllerName;
-                    //$result = $controllerObject->$actionName($parameters);
+                    // $result = $controllerObject->$actionName($parameters);
                     
-                    //if($controllerName != 'AdminController' && $actionName != 'actionProduct') {
-                        $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
-                    //}
-                    
+                    $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                    // echo $result . '<br>';                
                     if ($result != null) {
                         break;
                     }   

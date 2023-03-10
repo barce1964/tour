@@ -3,7 +3,7 @@
 ?>
 
 <script type="text/javascript">
-    $('body').css('overflow', 'hidden');
+    $('body').css('overflow', 'auto');
 </script>
 
 <!-- <section class="hero-wrap js-fullheight"> -->

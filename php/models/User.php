@@ -153,10 +153,10 @@
         }
 
         /**
-         * Проверяет имя: не меньше, чем 4 символа
+         * Проверяет имя: не меньше, чем 2 символа
          */
         public static function checkName($name) {
-            if (strlen($name) >= 4) {
+            if (strlen($name) >= 2) {
                 return true;
             }
             return false;
@@ -190,7 +190,8 @@
         }
 
         public static function checkCard($card) {
-            if (strlen($card) == 16) {
+            $pat_card = '{16}[0-9]';
+            if(preg_match("~[0-9]{16}~", $card)) {
                 return true;
             }
             return false;
